@@ -1,3 +1,4 @@
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Droplet } from "lucide-react";
@@ -5,6 +6,8 @@ import { Menu, X, Droplet } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const onMainPage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +18,15 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    if (!onMainPage) {
+        // If not on main page, navigation will be handled by Links
+        return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
     }
+    setIsMobileMenuOpen(false);
   };
 
   const menuItems = [
@@ -28,6 +35,32 @@ const Navigation = () => {
     { label: "GYIK", id: "faq" },
     { label: "Kapcsolat", id: "contact" },
   ];
+
+  const renderMenuItem = (item: typeof menuItems[0], isMobile = false) => {
+    const className = `text-foreground hover:text-primary transition-smooth font-medium ${isMobile ? 'text-left w-full block' : ''}`;
+
+    if (item.id === "faq") {
+      return (
+        <Link key={item.id} to="/gyik" className={className} onClick={() => setIsMobileMenuOpen(false)}>
+          {item.label}
+        </Link>
+      );
+    }
+
+    if (onMainPage) {
+      return (
+        <button key={item.id} onClick={() => scrollToSection(item.id)} className={className}>
+          {item.label}
+        </button>
+      );
+    }
+
+    return (
+      <Link key={item.id} to={`/#${item.id}`} className={className} onClick={() => setIsMobileMenuOpen(false)}>
+        {item.label}
+      </Link>
+    );
+  };
 
   return (
     <nav
@@ -40,35 +73,29 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>
             <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
               <Droplet className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-foreground">CleanPro</span>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary transition-smooth font-medium"
-              >
-                {item.label}
-              </button>
-            ))}
+            {menuItems.map((item) => renderMenuItem(item))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button
-              variant="default"
-              size="lg"
-              onClick={() => scrollToSection("contact")}
-            >
-              Ajánlatkérés
-            </Button>
+             {onMainPage ? (
+                <Button variant="default" size="lg" onClick={() => scrollToSection("contact")}>
+                    Ajánlatkérés
+                </Button>
+             ) : (
+                <Button variant="default" size="lg" asChild>
+                    <Link to="/#contact">Ajánlatkérés</Link>
+                </Button>
+             )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,23 +111,16 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {menuItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-foreground hover:text-primary transition-smooth font-medium text-left"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <Button
-                variant="default"
-                size="lg"
-                onClick={() => scrollToSection("contact")}
-                className="w-full"
-              >
-                Ajánlatkérés
-              </Button>
+              {menuItems.map((item) => renderMenuItem(item, true))}
+              {onMainPage ? (
+                <Button variant="default" size="lg" onClick={() => scrollToSection("contact")} className="w-full">
+                    Ajánlatkérés
+                </Button>
+             ) : (
+                <Button variant="default" size="lg" asChild className="w-full">
+                    <Link to="/#contact">Ajánlatkérés</Link>
+                </Button>
+             )}
             </div>
           </div>
         )}
