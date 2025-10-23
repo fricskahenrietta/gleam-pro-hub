@@ -156,16 +156,25 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <div>
-              <Label htmlFor="startDate">Legkorábbi kezdés *</Label>
-              <Input
-                id="startDate"
-                type="date"
-                required
-                value={formData.startDate}
-                onChange={(e) => handleInputChange("startDate", e.target.value)}
-              />
-            </div>
+              <div>
+                <Label htmlFor="startDate">Legkorábbi kezdés *</Label>
+                <Select
+                  value={formData.startDate}
+                  onValueChange={(value) => handleInputChange("startDate", value)}
+                  required
+                >
+                  <SelectTrigger id="startDate">
+                    <SelectValue placeholder="Válasszon időpontot..." />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover z-50">
+                    {Array.from({ length: 7 }, (_, i) => 16 + i).map((hour) => (
+                      <SelectItem key={hour} value={`${hour}:00`}>
+                        {`${hour}:00`}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
             <Button type="submit" variant="hero" size="lg" className="w-full">
               Ajánlat Kérése
