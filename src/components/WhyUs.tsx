@@ -25,7 +25,16 @@ const WhyUs = () => {
   ];
 
   return (
+    
     <section id="faq" className="py-20 bg-gradient-hero">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-left text-foreground mb-4">
+          Több mint takarítás, egy megújulási élmény
+        </h2>
+        <p className="text-xl text-left text-muted-foreground mb-16 max-w-4xl">
+          A ProClean Family nem egyszerűen takarít, hanem újjáéleszti tereit. <br />Minden egyes munkánk mögött professzionalizmus és szenvedély áll.
+        </p>
+        </div>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((reason, index) => {

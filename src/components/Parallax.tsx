@@ -6,7 +6,7 @@ const Parallax = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      setScrollY(100 - window.scrollY / 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -25,16 +25,6 @@ const Parallax = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
-      </div>
-      <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="text-center text-white px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Tisztaság, Amire Számíthat
-          </h2>
-          <p className="text-xl max-w-2xl mx-auto">
-            Több mint 500 elégedett ügyfél tapasztalata
-          </p>
-        </div>
       </div>
     </section>
   );
