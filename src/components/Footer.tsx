@@ -1,4 +1,5 @@
 import { Droplet, Facebook, Instagram, Linkedin } from "lucide-react";
+import logo from '@/assets/logo.svg';
 
 const Footer = () => {
   return (
@@ -8,10 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
-              <Droplet className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold">CleanPro</span>
+            <img src={logo} alt="Logo" className="h-16 brightness-[400]"></img>
           </div>
 
           {/* Slogan */}

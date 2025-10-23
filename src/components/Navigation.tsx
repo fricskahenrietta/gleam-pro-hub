@@ -2,6 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Droplet } from "lucide-react";
+import logo from "@/assets/logo.svg";
+
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,10 +76,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
-              <Droplet className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">CleanPro</span>
+            <img src={logo} alt="Logo" className=" h-14"></img>
           </Link>
 
           {/* Desktop Menu */}
