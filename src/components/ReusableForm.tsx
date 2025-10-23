@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -11,8 +12,6 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
-// This form is self-contained and can be reused.
-// It optionally calls onFormChange with the current form data when it changes.
 interface ReusableFormProps {
   onFormChange?: (formData: any) => void;
 }
@@ -26,23 +25,31 @@ const initialFormData = {
   size: "",
   frequency: "",
   startDate: "",
+  privacyAccepted: false,
 };
 
 const ReusableForm: React.FC<ReusableFormProps> = ({ onFormChange }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState(initialFormData);
 
-  // Notify parent component of changes
   useEffect(() => {
     onFormChange?.(formData);
   }, [formData, onFormChange]);
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.privacyAccepted) {
+      toast({
+        title: "Hiba",
+        description: "Az ajánlatkéréshez el kell fogadnia az adatvédelmi tájékoztatót.",
+        variant: "destructive",
+      });
+      return;
+    }
     toast({
       title: "Köszönjük az érdeklődést!",
       description: "Hamarosan felvesszük Önnel a kapcsolatot.",
@@ -108,7 +115,15 @@ const ReusableForm: React.FC<ReusableFormProps> = ({ onFormChange }) => {
           </SelectContent>
         </Select>
       </div>
-      <Button type="submit" variant="hero" size="lg" className="w-full">
+
+      <div className="flex items-center space-x-2">
+        <Checkbox id="privacy" onCheckedChange={(checked) => handleInputChange("privacyAccepted", checked as boolean)} checked={formData.privacyAccepted} />
+        <Label htmlFor="privacy" className="text-sm font-normal text-muted-foreground">
+          Elfogadom az <a href="/adatvedelem" target="_blank" className="underline hover:text-primary">Adatvédelmi Tájékoztatót</a>.
+        </Label>
+      </div>
+
+      <Button type="submit" variant="hero" size="lg" className="w-full" disabled={!formData.privacyAccepted}>
         Ajánlat Kérése
       </Button>
     </form>
