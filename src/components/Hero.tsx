@@ -21,7 +21,8 @@ const Hero = () => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/30" />
+        <div className="absolute top-0 left-0 h-full w-3/4 bg-gradient-to-r from-background via-background/95 to-background/0"></div>
+
       </div>
 
       {/* Content */}
