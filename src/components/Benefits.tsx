@@ -10,12 +10,12 @@ const Benefits = () => {
     {
       icon: Clock,
       title: "Rugalmas Időpontok",
-      description: "Munkaidőn kívül is elérhetőek vagyunk, hogy ne zavarjuk a munkát.",
+      description: "Igazodunk partnereink igényeihez. <br> A ProClean Family mindig pontos és precíz.",
     },
     {
       icon: Shield,
       title: "Megbízható Csapat",
-      description: "Ellenőrzött, tapasztalt munkatársak garantálják a biztonságot.",
+      description: "Ellenőrzött, tapasztalt munkatársaink garantálják a kifogástalan minőséget.",
     },
   ];
 
@@ -41,9 +41,10 @@ const Benefits = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-muted-foreground">
-                  {benefit.description}
-                </p>
+                <p
+                  className="text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: benefit.description }}
+                />
               </div>
             );
           })}
