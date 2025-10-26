@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { initGA } from "@/lib/analytics";
+import eventBus from "@/lib/event-bus";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,6 +12,19 @@ const CookieConsent = () => {
     if (!consent) {
       setIsVisible(true);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleReset = () => {
+      localStorage.removeItem("cookie_consent");
+      setIsVisible(true);
+    };
+
+    eventBus.on("resetCookieConsent", handleReset);
+
+    return () => {
+      eventBus.off("resetCookieConsent", handleReset);
+    };
   }, []);
 
   const handleConsent = (consent: "accepted" | "declined") => {

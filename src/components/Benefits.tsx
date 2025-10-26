@@ -10,7 +10,7 @@ const Benefits = () => {
     {
       icon: Clock,
       title: "Rugalmas Időpontok",
-      description: "Igazodunk partnereink igényeihez. <br> A ProClean Family mindig pontos és precíz.",
+      description: "Igazodunk partnereink igényeihez. <br/> A ProClean Family mindig pontos és precíz.",
     },
     {
       icon: Shield,
@@ -41,10 +41,9 @@ const Benefits = () => {
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   {benefit.title}
                 </h3>
-                <p
-                  className="text-muted-foreground"
-                  dangerouslySetInnerHTML={{ __html: benefit.description }}
-                />
+                <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: benefit.description }}>
+                  
+                </p>
               </div>
             );
           })}

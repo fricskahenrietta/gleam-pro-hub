@@ -1,7 +1,12 @@
+import eventBus from "@/lib/event-bus";
 import { Droplet, Facebook, Instagram, Linkedin } from "lucide-react";
 import logo from '@/assets/logo.svg';
 
 const Footer = () => {
+  const handleResetCookie = () => {
+    eventBus.emit('resetCookieConsent');
+  };
+
   return (
     <footer className="bg-foreground text-background py-12">
       <div className="container mx-auto px-4">
@@ -53,9 +58,9 @@ const Footer = () => {
               <a href="#" className="hover:text-background transition-smooth">
                 Adatvédelmi Tájékoztató
               </a>
-              <a href="#" className="hover:text-background transition-smooth">
+              <button onClick={handleResetCookie} className="hover:text-background transition-smooth">
                 Cookie Beállítások
-              </a>
+              </button>
             </div>
           </div>
         </div>
