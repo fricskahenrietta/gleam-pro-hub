@@ -1,26 +1,26 @@
-import { CheckCircle2, Users, Award, HeartHandshake } from "lucide-react";
+import { Home, Sparkles, Award, HeartHandshake } from "lucide-react";
 
 const WhyUs = () => {
   const reasons = [
     {
-      icon: CheckCircle2,
-      title: "Ellenőrzött Minőség",
-      description: "Minden takarítás után részletes minőségellenőrzést végzünk, garantálva a legmagasabb színvonalat.",
+      icon: Home,
+      title: "Családi vállalkozás, profi minőség",
+      description: "A ProClean Family egy elhivatott családi vállalkozás, ahol a megbízhatóság és a precíz munka alapérték. Minden feladatot úgy végzünk, mintha a saját irodánkról lenne szó – igényesen, pontosan, szívvel.",
     },
     {
-      icon: Users,
-      title: "Képzett Szakemberek",
-      description: "Csapatunk rendszeres képzéseken vesz részt, mindig naprakész a legújabb takarítási technikákkal.",
+      icon: Sparkles,
+      title: "A tisztaság ereje",
+      description: "Tiszta környezetben könnyebb a fókusz és jobb a hangulat. Hiszünk abban, hogy a rendezett, friss munkatér nemcsak szép, hanem inspiráló is – segít abban, hogy csapata a legjobbat hozza ki magából.",
     },
     {
       icon: Award,
-      title: "10+ Év Tapasztalat",
-      description: "Több mint egy évtizedes tapasztalattal rendelkezünk az irodatakarítás területén.",
+      title: "Mindig fejlődünk",
+      description: "Nem állunk meg: új partnerekkel, modern takarítóeszközökkel és még hatékonyabb megoldásokkal fejlesztjük szolgáltatásainkat. Célunk, hogy minden ügyfelünk számára a legmagasabb színvonalat biztosítsuk – nap mint nap.",
     },
     {
       icon: HeartHandshake,
-      title: "Ügyfél-orientált",
-      description: "Az Ön igényei a legfontosabbak számunkra. Rugalmas és személyre szabott megoldásokat kínálunk.",
+      title: "Tisztaság. Bizalom. ProClean.",
+      description: "A ProClean Familynél a tisztaság nemcsak munka, hanem öröklött családi érték. Kis, összeszokott csapatként szívvel-lélekkel dolgozunk, hogy minden hely ragyogjon, ahová belépünk.",
     },
   ];
 
@@ -29,10 +29,10 @@ const WhyUs = () => {
     <section id="faq" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-left text-foreground mb-4">
-          Több mint takarítás, egy megújulási élmény
+          Tisztaság, amire mindig számíthat
         </h2>
         <p className="text-xl text-left text-muted-foreground mb-16 max-w-4xl">
-          A ProClean Family nem egyszerűen takarít, hanem újjáéleszti tereit. <br />Minden egyes munkánk mögött professzionalizmus és szenvedély áll.
+          A ProClean Family egy családi vállalkozás, ahol a tisztaság érték. <br />Hiszünk benne, hogy a rendezett környezet inspirál, feltölt és megnyugtat.
         </p>
         </div>
       <div className="container mx-auto px-4">

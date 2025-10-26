@@ -14,8 +14,8 @@ const Footer = () => {
 
           {/* Slogan */}
           <div className="flex items-center justify-center">
-            <p className="text-lg font-medium italic">
-              Tisztaság minden részletben
+            <p className="font-medium italic">
+              Tisztaság, mely nem csak munka, hanem családi érték
             </p>
           </div>
 

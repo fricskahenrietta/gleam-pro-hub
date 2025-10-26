@@ -69,7 +69,7 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-medium"
-          : "bg-transparent"
+          : "bg-background/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-md shadow-medium lg:shadow-none"
       }`}
     >
       <div className="container mx-auto px-4">

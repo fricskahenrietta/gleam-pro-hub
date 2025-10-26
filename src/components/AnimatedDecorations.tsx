@@ -51,7 +51,7 @@ const AnimatedDecorations = () => {
         return (
           <Icon
             key={index}
-            className="absolute text-primary/20"
+            className="absolute text-primary opacity-50"
             style={deco.style as React.CSSProperties}
           />
         );
