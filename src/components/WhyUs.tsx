@@ -15,12 +15,12 @@ const WhyUs = () => {
     {
       icon: Award,
       title: "Mindig fejlődünk",
-      description: "Nem állunk meg: új partnerekkel, modern takarítóeszközökkel és még hatékonyabb megoldásokkal fejlesztjük szolgáltatásainkat. Célunk, hogy minden ügyfelünk számára a legmagasabb színvonalat biztosítsuk – nap mint nap.",
+      description: "Új partnerekkel, modern takarítóeszközökkel és még hatékonyabb megoldásokkal fejlesztjük szolgáltatásainkat. Célunk, hogy minden ügyfelünk számára a legmagasabb színvonalat biztosítsuk – nap mint nap.",
     },
     {
       icon: HeartHandshake,
       title: "Tisztaság. Bizalom. ProClean.",
-      description: "A ProClean Familynél a tisztaság nemcsak munka, hanem öröklött családi érték. Kis, összeszokott csapatként szívvel-lélekkel dolgozunk, hogy minden hely ragyogjon, ahová belépünk.",
+      description: "A ProClean Familynél a tisztaság nemcsak munka, hanem öröklött családi érték. Kis, összeszokott csapatként szívvel-lélekkel dolgozunk, hogy minden hely ragyogjon, ahonnan kilépünk.",
     },
   ];
 
