@@ -75,7 +75,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 cursor-pointer" onClick={() => { window.scrollTo(0, 0); setIsMobileMenuOpen(false); }}>
+          <Link to="/" className="flex items-center gap-2 cursor-pointer" onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setIsMobileMenuOpen(false); }}>
             <img src={logo} alt="Logo" className=" h-14"></img>
           </Link>
 
