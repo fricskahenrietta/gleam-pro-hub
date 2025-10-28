@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import serviceOffice from "@/assets/service-office.jpg";
 import serviceDeep from "@/assets/service-deep.jpg";
 import serviceWindow from "@/assets/service-window.jpg";
 import serviceSpecialized from "@/assets/service-specialized.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Services = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const services = [
     {
@@ -30,8 +34,46 @@ const Services = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isMobile && isInView) {
+      interval = setInterval(() => {
+        setFlippedCard(prev => (prev === null || prev >= services.length - 1 ? 0 : prev + 1));
+      }, 2500);
+    }
+    return () => clearInterval(interval);
+  }, [isMobile, isInView, services.length]);
+
+  const handleInteraction = (index: number) => {
+    if (isMobile) {
+      setFlippedCard(flippedCard === index ? null : index);
+    } else {
+      // Desktop hover logic is handled by onMouseEnter/onMouseLeave
+    }
+  };
+
+
   return (
-    <section id="services" className="py-12 md:py-20">
+    <section ref={sectionRef} id="services" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4">
           Szolgáltatásaink
@@ -45,9 +87,9 @@ const Services = () => {
             <div
               key={index}
               className="relative h-96 md:h-80 rounded-xl overflow-hidden cursor-pointer group"
-              onMouseEnter={() => setFlippedCard(index)}
-              onMouseLeave={() => setFlippedCard(null)}
-              onClick={() => setFlippedCard(flippedCard === index ? null : index)}
+              onMouseEnter={() => !isMobile && setFlippedCard(index)}
+              onMouseLeave={() => !isMobile && setFlippedCard(null)}
+              onClick={() => handleInteraction(index)}
             >
               {/* Front Side */}
               <div
@@ -68,11 +110,11 @@ const Services = () => {
 
               {/* Back Side */}
               <div
-                className={`absolute inset-0 gradient-primary flex items-center justify-center p-6 transition-all duration-500 ${
+                className={`absolute inset-0 gradient-primary flex items-center justify-center p-6 text-center transition-all duration-500 ${
                   flippedCard === index ? "opacity-100 scale-100" : "opacity-0 scale-95"
                 }`}
               >
-                <div className="text-white text-center">
+                <div className="text-white">
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                   <p className="text-white/90">{service.description}</p>
                 </div>

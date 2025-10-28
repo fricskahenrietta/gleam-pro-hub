@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-cleaners.jpg";
+import heroImageMobile from "@/assets/office-form-bg.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
+  const isMobile = useIsMobile();
+  const backgroundImage = isMobile ? heroImageMobile : heroImage;
+  const backgroundPosition = isMobile ? 'center' : 'right center';
+
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -10,13 +16,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden pt-20">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundPosition: 'right center',
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundPosition: backgroundPosition,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
         }}

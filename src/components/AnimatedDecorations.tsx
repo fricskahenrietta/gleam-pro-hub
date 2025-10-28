@@ -1,6 +1,7 @@
 import { SprayCan, PaintBucket, Sparkles, Feather } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const decorations = [
+const desktopDecorations = [
   {
     icon: SprayCan,
     style: {
@@ -43,7 +44,33 @@ const decorations = [
   },
 ];
 
+const mobileDecorations = [
+  {
+    icon: SprayCan,
+    style: {
+      top: "10%",
+      left: "5%",
+      width: "40px",
+      height: "40px",
+      animation: "float 6s ease-in-out infinite",
+    },
+  },
+  {
+    icon: Sparkles,
+    style: {
+      top: "10%",
+      right: "5%",
+      width: "40px",
+      height: "40px",
+      animation: "float 7s ease-in-out infinite 1s",
+    },
+  },
+];
+
 const AnimatedDecorations = () => {
+  const isMobile = useIsMobile();
+  const decorations = isMobile ? mobileDecorations : desktopDecorations;
+
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       {decorations.map((deco, index) => {

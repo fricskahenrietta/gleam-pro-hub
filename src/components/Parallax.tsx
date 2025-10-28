@@ -19,6 +19,10 @@ const Parallax = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobile]);
 
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <section className="relative h-80 md:h-[400px] overflow-hidden">
       <div
@@ -27,16 +31,10 @@ const Parallax = () => {
           backgroundImage: `url(${parallaxImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          ...(!isMobile && {
-            top: "-50px",
-            height: "calc(100% + 100px)",
-            transform: `translateY(${scrollY * 0.5}px)`,
-            transition: "transform 0.1s ease-out",
-          }),
-          ...(isMobile && {
-            height: "100%",
-            top: "0",
-          }),
+          top: "-50px",
+          height: "calc(100% + 100px)",
+          transform: `translateY(${scrollY * 0.5}px)`,
+          transition: "transform 0.1s ease-out",
         }}
       >
         <div className="absolute inset-0 bg-black/40" />
