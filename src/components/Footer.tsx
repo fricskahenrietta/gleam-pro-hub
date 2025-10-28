@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/70">
             <p>© 2024 CleanPro. Minden jog fenntartva.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-background transition-smooth">
+              <a href="/adatvedelem" className="hover:text-background transition-smooth">
                 Adatvédelmi Tájékoztató
               </a>
               <button onClick={handleResetCookie} className="hover:text-background transition-smooth">
