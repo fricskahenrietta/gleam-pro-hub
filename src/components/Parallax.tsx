@@ -13,10 +13,12 @@ const Parallax = () => {
   }, []);
 
   return (
-    <section className="relative h-96 overflow-hidden">
+    <section className="relative h-[400px] overflow-hidden">
       <div
-        className="absolute inset-0"
+        className="absolute left-0 w-full"
         style={{
+          top: "-50px",
+          height: "calc(100% + 400px)",
           backgroundImage: `url(${parallaxImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
