@@ -19,12 +19,12 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-12 md:py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4">
           Ügyfeleink Mondták
         </h2>
-        <p className="text-xl text-center text-muted-foreground mb-16">
+        <p className="text-xl text-center text-muted-foreground mb-12 md:mb-16">
           Hallgassa meg elégedett partnereink véleményét
         </p>
 
@@ -32,7 +32,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card rounded-xl p-8 shadow-soft hover:shadow-medium transition-smooth"
+              className="bg-card rounded-xl p-6 md:p-8 shadow-soft hover:shadow-medium transition-smooth"
             >
               <Quote className="w-10 h-10 text-primary mb-4" />
               <h3 className="text-xl font-bold text-foreground mb-4">

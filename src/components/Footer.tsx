@@ -13,19 +13,19 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center md:justify-start gap-2">
             <img src={logo} alt="Logo" className="h-16 brightness-[400]"></img>
           </div>
 
           {/* Slogan */}
           <div className="flex items-center justify-center">
-            <p className="font-medium italic">
+            <p className="font-medium italic text-center md:text-left">
               Tisztaság, mely nem csak munka, hanem családi érték
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-end gap-4">
+          <div className="flex items-center justify-center md:justify-end gap-4">
             <a
               href="#"
               className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-smooth"
@@ -54,7 +54,7 @@ const Footer = () => {
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/70">
             <p>© 2024 CleanPro. Minden jog fenntartva.</p>
-            <div className="flex gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 text-center sm:gap-6">
               <a href="/adatvedelem" className="hover:text-background transition-smooth">
                 Adatvédelmi Tájékoztató
               </a>

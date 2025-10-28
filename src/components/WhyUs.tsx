@@ -26,16 +26,14 @@ const WhyUs = () => {
 
   return (
     
-    <section id="faq" className="py-20 bg-gradient-hero">
+    <section id="faq" className="py-12 md:py-20 bg-gradient-hero">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-left text-foreground mb-4">
           Tisztaság, amire mindig számíthat
         </h2>
-        <p className="text-xl text-left text-muted-foreground mb-16 max-w-4xl">
-          A ProClean Family egy családi vállalkozás, ahol a tisztaság érték. <br />Hiszünk benne, hogy a rendezett környezet inspirál, feltölt és megnyugtat.
+        <p className="text-xl text-left text-muted-foreground mb-12 md:mb-16 max-w-4xl">
+          A ProClean Family egy családi vállalkozás, ahol a tisztaság érték. <br className="hidden sm:block" />Hiszünk benne, hogy a rendezett környezet inspirál, feltölt és megnyugtat.
         </p>
-        </div>
-      <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;

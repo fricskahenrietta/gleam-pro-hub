@@ -31,12 +31,12 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-12 md:py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-4">
           Szolgáltatásaink
         </h2>
-        <p className="text-xl text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+        <p className="text-xl text-center text-muted-foreground mb-12 md:mb-16 max-w-2xl mx-auto">
           Átfogó takarítási megoldások minden vállalkozás számára
         </p>
 
@@ -44,9 +44,10 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="relative h-80 rounded-xl overflow-hidden cursor-pointer group"
+              className="relative h-96 md:h-80 rounded-xl overflow-hidden cursor-pointer group"
               onMouseEnter={() => setFlippedCard(index)}
               onMouseLeave={() => setFlippedCard(null)}
+              onClick={() => setFlippedCard(flippedCard === index ? null : index)}
             >
               {/* Front Side */}
               <div
